@@ -1,0 +1,154 @@
+.allBrand_header{
+    display: block;
+}
+
+.allBrand_title{
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    padding: 0 10px;
+    background-color: white;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.sp1{
+    width: 90%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sp2{
+    float: right;
+    margin-top: -50px;
+    font-size: 17px !important;
+}
+
+
+.allBrand_abc
+.allBrands
+.list_abc{
+    top: 0;
+    bottom: 0;
+    right: 4px;
+    width: 10px;
+    z-index: 1;
+    position: fixed;
+    text-align: center;
+}
+
+.l_wrap{
+    display: table;
+    height: 100%;
+}
+
+.l_cell{
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.spabc{
+    display: block;
+    height: 12px;
+    margin-top: 2px;
+    font-size: 12px;
+}
+
+
+.current{
+    color: red
+}
+
+.allBrand_list{
+    background: #f3f4f5;
+    padding: 45px 0 0;
+    padding-top: 0;
+}
+
+.brand_item{
+    text-indent: 15px;
+    line-height: 24px;
+    font-size: 12px;
+}
+
+.demo{
+    display: block;
+    background: #fff;
+    color: #333;
+}
+
+.brand_wraps{
+    padding: 10px;
+    border-bottom: 1px solid #f3f4f5;
+    margin-right: 20px;
+    background-color: white;
+    height: 70px;
+}
+
+.brand_img{
+    text-align: center;
+    width: 30%;
+    max-width: 150px;
+    height: 50px;
+    border: 1px solid #f3f4f5;
+    float: left;
+    overflow: hidden!important;
+}
+
+.brand_img  img{
+    max-width: 90%;
+    height: 40px;
+    margin: 5px auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+}
+
+.jian{
+    width: 13px;
+    height: 13px;
+    /*top: 0*/
+    left: 10px;
+    position: absolute;
+}
+
+.taGongYi{
+    /*font-size 8px*/
+    /*padding 0 2px*/
+    /*top 0*/
+    /*right 3px*/
+    /*background #e44b46*/
+    /*color white*/
+    position: absolute;
+    height: 13px;
+    left: 83px;
+    /*width 35px*/
+}
+
+.brand_name{
+    margin: 5px 0 5px 20px;
+    float: left;
+}
+
+.bp1{
+    font-size: 14px;
+}
+.bp2{
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+}
+.backs{
+    position: absolute
+}
+.test{
+    height: 375px
+}
+.backs{
+     color: #898989;
+}

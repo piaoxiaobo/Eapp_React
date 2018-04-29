@@ -1,21 +1,78 @@
 import React from 'react';
+import axios from 'axios'
 import './css/index.css'
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.min.css';
+import BScroll from 'better-scroll';
 
-import {Route, Switch, Redirect} from 'react-router-dom';
 
 export default class Home extends React.Component {
+     constructor(props){
+                 super(props);
+                 this.state = {
+                    home:{}
+         }
+         this.close = this.close.bind(this)
+     }
+
+   /* componentDidUpdate(){
+
+        new Swiper(".swiper-container", {
+            loop: true,
+            autoplay: true,
+            pagination: {
+                el: '.swiper-pagination',
+            }
+        });
+
+    }*/
+    componentDidMount() {
+
+        axios.get('/newindex')
+            .then(res => {
+               const home = res.data.data;
+               console.log(home);
+                this.setState({home});
+            });
+
+        new BScroll('.pro_warp', {
+            click: true,
+            scrollX: true,
+        });
+
+    }
+
+    close(){
+        this.refs.titletop.style.display='none';
+        this.refs.indexwrap.style.margin='23px auto 0';
+    }
     render(){
+      let navs = this.state.home.navigation;
+      let xrzx = this.state.home.xrzx;
+      let menus = this.state.home.menus;
+      let goods = this.state.home.goods;
+      let carousel = this.state.home.carousel;
+      let pics = this.state.home.pinpaitemai;
+      if(!menus&&!navs&&!goods&&!carousel&&!xrzx&&!pics){
+          menus=[];
+          navs=[];
+          goods=[];
+          carousel=[];
+          xrzx={};
+      }
+
       return(
         <div>
             <div className="index_wrap">
                 <div id="header">
                     {/*头部广告*/}
-                    <div>
+                    <div  ref='titletop'>
                         <div className="overflow xiaozaiApp">
                             <div className="overflow rela">
-       <span className="clsoe_btn">
-        <img id="close_down_bar" src="images/app/close_down_bar.png" alt="xiaozaiApp" />
-       </span>
+                               <span className="clsoe_btn">
+                                <img id="close_down_bar" onClick={this.close}
+                                     src="images/app/close_down_bar.png" alt="xiaozaiApp" />
+                               </span>
                                 <div className="appdowimg">
                                     <a >
                                         <img src="images/app/app.jpg" alt="xiaozaiapp" />
@@ -50,13 +107,11 @@ export default class Home extends React.Component {
                                 <div className="find_nav_left dscroll">
                                     <div className="find_nav_list dscroll-div" >
                                         <ul className="dscroll-ul">
-                                            <li className="dscroll-li"><a ><span><span className="rela">首页</span><i></i></span></a></li>
-                                            <li className="dscroll-li"><a ><span><span className="rela">狗狗主粮</span><i></i></span></a></li>
-                                            <li className="dscroll-li"><a ><span><span className="rela">零食</span><i></i></span></a></li>
-                                            <li className="dscroll-li"><a ><span><span className="rela">医疗保健</span><i></i></span></a></li>
-                                            <li className="dscroll-li"><a ><span><span className="rela">玩具</span><i></i></span></a></li>
-                                            <li className="dscroll-li"><a ><span><span className="rela">外出</span><i></i></span></a></li>
-                                            <li className="dscroll-li"><a ><span><span className="rela">服饰城</span><i></i></span></a></li>
+                                            {
+                                                menus.map((menu,index)=>{
+                                                   return <li className="dscroll-li" key={index}><a ><span><span className="rela">{menu.menu_name}</span><i></i></span></a></li>
+                                                })
+                                            }
                                         </ul>
                                     </div>
                                 </div>
@@ -65,52 +120,39 @@ export default class Home extends React.Component {
                     </div>
                 </div>
                 {/*首页内容*/}
-                <div className="index_content">
+                <div className="header_box"></div>
+                <div className="index_content" ref='indexwrap'>
                     {/*轮播图*/}
-                    <div className="carousel">
-                        <img src="images/nav/Car_4.jpg" alt="" />
-                    </div>
+                    <div className="swiper-container">
+                        <div className="swiper-wrapper" >
+                            {
+                                carousel.map((item,index) =>{
+                                   return <div className="swiper-slide" key={index}><img src={item.image} alt=""/></div>
+
+                                })
+                            }
+                        </div>
+                    <div className="swiper-pagination"></div>
+                </div>
                     {/*导航*/}
                     <div>
                         <div className="columnnavdiv">
                             <div>
                                 <ul className="nav_list">
-                                    <li className="nav_list_item">
-                                        <a ><img src="images/nav/nav_1.jpg" alt="" /></a>
-                                    </li>
-                                    <li className="nav_list_item">
-                                        <a ><img src="images/nav/nav_2.jpg" alt="" /></a>
-                                    </li>
-                                    <li className="nav_list_item">
-                                        <a ><img src="images/nav/nav_3.jpg" alt="" /></a>
-                                    </li>
-                                    <li className="nav_list_item">
-                                        <a ><img src="images/nav/nav_4.jpg" alt="" /></a>
-                                    </li>
-                                    <li className="nav_list_item">
-                                        <a ><img src="images/nav/nav_5.jpg" alt="" /></a>
-                                    </li>
-                                    <li className="nav_list_item">
-                                        <a ><img src="images/nav/nav_6.jpg" alt="" /></a>
-                                    </li>
-                                    <li className="nav_list_item">
-                                        <a ><img src="images/nav/nav_7.jpg" alt="" /></a>
-                                    </li>
-                                    <li className="nav_list_item">
-                                        <a ><img src="images/nav/nav_8.jpg" alt="" /></a>
-                                    </li>
-                                    <li className="nav_list_item">
-                                        <a ><img src="images/nav/nav_9.jpg" alt="" /></a>
-                                    </li>
-                                    <li className="nav_list_item">
-                                        <a ><img src="images/nav/nav_10.jpg" alt="" /></a>
-                                    </li>
+                                    {
+                                        navs.map((nav,index)=>{
+                                            return <li className="nav_list_item" key={index}>
+                                                <a ><img src={nav.image} alt="" /></a>
+                                            </li>
+                                        })
+                                    }
+
                                 </ul>
                             </div>
                         </div>
                         <div className="banner_item">
                             <a >
-                                <img src="images/nav/nav_banner.gif" alt="banner" />
+                                <img src={xrzx.imgurl} alt="banner" />
                             </a>
                         </div>
                         <div className="banner-round"></div>
@@ -132,58 +174,24 @@ export default class Home extends React.Component {
                                     <a ><img src="images/nav/more.png" alt="more" /></a>
                                 </div>
                             </div>
-                            <div className="surprise_pro">
                                 <div className="pro_warp">
-                                    <div className="pro_slide">
-                                        <div className="pro_block">
-                                            <a >
-                                                <div className="block_img">
-                                                    <img src="images/block_img/block_img1.jpg" alt="" />
+                                    <div className="pro_items">
+                                        {
+                                            goods.map((good,index)=>{
+                                                return  <div className="pro_block" key={index}>
+                                                    <a >
+                                                        <div className="block_img">
+                                                            <img src={good.image} alt="" />
+                                                        </div>
+                                                        <div className="cred">
+                                                            <span className="ft12">￥</span>
+                                                            <span className="ft17">{good.sale_price}</span>
+                                                        </div>
+                                                        <p className="ftc">{good.little_price}</p>
+                                                    </a>
                                                 </div>
-                                                <div className="cred">
-                                                    <span className="ft12">￥</span>
-                                                    <span className="ft17">37.90</span>
-                                                </div>
-                                                <p className="ftc">省341.10</p>
-                                            </a>
-                                        </div>
-                                        <div className="pro_block">
-                                            <a >
-                                                <div className="block_img">
-                                                    <img src="images/block_img/block_img1.jpg" alt="" />
-                                                </div>
-                                                <div className="cred">
-                                                    <span className="ft12">￥</span>
-                                                    <span className="ft17">37.90</span>
-                                                </div>
-                                                <p className="ftc">省341.10</p>
-                                            </a>
-                                        </div>
-                                        <div className="pro_block">
-                                            <a >
-                                                <div className="block_img">
-                                                    <img src="images/block_img/block_img1.jpg" alt="" />
-                                                </div>
-                                                <div className="cred">
-                                                    <span className="ft12">￥</span>
-                                                    <span className="ft17">37.90</span>
-                                                </div>
-                                                <p className="ftc">省341.10</p>
-                                            </a>
-                                        </div>
-                                        <div className="pro_block">
-                                            <a >
-                                                <div className="block_img">
-                                                    <img src="images/block_img/block_img1.jpg" alt="" />
-                                                </div>
-                                                <div className="cred">
-                                                    <span className="ft12">￥</span>
-                                                    <span className="ft17">37.90</span>
-                                                </div>
-                                                <p className="ftc">省341.10</p>
-                                            </a>
-                                        </div>
-                                    </div>
+                                            })
+                                        }
                                 </div>
                             </div>
                         </div>
@@ -354,7 +362,6 @@ export default class Home extends React.Component {
                             <div className="xline"><div className="page-line"></div></div>
                         </div>
                         <div className="xline"><div className="page-line"></div></div>
-
                         <div className="e_items">
                             <div className="items_title">
                                 <img src="images/items/items_title1.jpg" alt="" />
@@ -430,7 +437,6 @@ export default class Home extends React.Component {
                             </div>
                         </div>
                         <div className="xline"><div className="page-line"></div></div>
-
                         <div>
                             <div>
                                 <a >

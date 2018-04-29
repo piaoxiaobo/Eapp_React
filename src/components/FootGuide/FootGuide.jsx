@@ -13,7 +13,7 @@ export default class  extends React.Component {
                <li className="footer_icons"><NavLink to='/classify' ><i className="iconfont icon-fenlei"></i><span>分类</span></NavLink></li>
                <li className="footer_icons"><NavLink to='/shopcart' ><i className="iconfont icon-gouwuche2"></i><span>购物车</span></NavLink></li>
                <li className="footer_icons icons_E"><NavLink to='/login' ><i className="iconfont icon-biaoqing"></i><span>我的E宠</span></NavLink></li>
-             </ul>
+            </ul>
         </div>
       )
     }

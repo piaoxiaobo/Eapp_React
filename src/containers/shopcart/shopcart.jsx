@@ -9,9 +9,9 @@ export default class ShopCart extends React.Component {
               <div className="allBrand_header">
                   <div className="allBrand_title" >
                       <div>
-                          <a ><span className="iconfont icon-return"></span></a>
+                          <a ><span className="iconfont icon-return back"></span></a>
                       <span className="sp1t">购物车</span>
-                      <span className="iconfont icon-fenlei1 sp2"  ></span>
+                      <span className="iconfont icon-fenlei1 sp2t"  ></span>
               </div>
           </div>
 
